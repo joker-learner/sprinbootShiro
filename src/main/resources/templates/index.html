@@ -9,9 +9,27 @@
 <body>
 <h1>主页</h1>
 <div>
-    <shiro:guest>
-
+<!--    拥有权限才能看到shiro标签里的信息-->
+    <shiro:guest> <!--内容里的东西是未登录才能看到-->
+        欢迎游客，请<a href="login.html">登录</a>
     </shiro:guest>
+
+    <shiro:user>
+        已登录的用户能看到......  <!-- principal 标签获得 当前登录的用户名-->
+        用户[<shiro:principal/>] , 欢迎您！！！
+        用户的权限为 ： <shiro:hasRole name="admin">超级管理员</shiro:hasRole>
+        用户的权限为 ： <shiro:hasRole name="cmanager">仓库管理员</shiro:hasRole>
+        用户的权限为 ： <shiro:hasRole name="xmanager">销售人员</shiro:hasRole>
+        用户的权限为 ： <shiro:hasRole name="kmanager">客服人员</shiro:hasRole>
+        用户的权限为 ： <shiro:hasRole name="zmanager">行政管理员</shiro:hasRole>
+    </shiro:user>
+    
+    <ul>
+        <shiro:hasPermission name="sys:c:save"><li><a href="">入库</a></li></shiro:hasPermission>
+        <shiro:hasPermission name="sys:c:delete"><li><a href="">入库</a></li></shiro:hasPermission>
+    </ul>
+
+
 
 
 </div>

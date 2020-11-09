@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lc.mapper.UserMapper">
+    <resultMap id="userMap" type="com.lc.pojo.Users">
+        <id column="id" property="id"></id>
+        <result column="username" property="userName"></result>
+        <result column="password" property="passWord"></result>
+        <result column="password_salt" property="passSalt"></result>
+    </resultMap>
+
+    <select id="querryByName" resultMap="userMap">
+        select * from users
+        where username = #{username}
+    </select>
+
+
+    <select id="">
+        SELECT t3.permissions from users as t1
+        INNER join user_roles as t2
+        on t1.username = t2.username
+        INNER JOIN roles_permissions as t3
+        on t3.role_name = t2.role_name
+        where t1.username = #{username};
+    </select>
+
+</mapper>
