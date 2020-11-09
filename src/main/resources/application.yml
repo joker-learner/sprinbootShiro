@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/db_shiro
+  thymeleaf:
+    cache: false
+    check-template-location: true
+
+mybatis:
+  mapper-locations: classpath:/mapper/**.xml
+  type-aliases-package: com.lc.pojo
+
+server:
+  port: 8080
+
