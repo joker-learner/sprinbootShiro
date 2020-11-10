@@ -4,12 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lc.mapper.RoleMapper">
     <select id="querryForRoleByUsername" resultSets="Set" resultType="String">
-        SELECT t3.permissions from users as t1
-        INNER join user_roles as t2
+        SELECT role_name from users as t1
+        INNER JOIN user_roles as t2
         on t1.username = t2.username
-        INNER JOIN roles_permissions as t3
-        on t3.role_name = t2.role_name
-        where t1.username = #{username};
+        where t1.username=#{username};
     </select>
 
 </mapper>

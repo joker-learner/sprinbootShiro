@@ -3,7 +3,6 @@ package com.lc.pojo;
 import lombok.Data;
 
 @Data
-
 public class Users {
 
     private Long id;
@@ -13,4 +12,5 @@ public class Users {
     private String passWord;
 
     private String passSalt;
+
 }
