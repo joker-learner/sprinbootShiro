@@ -15,5 +15,9 @@ public class pageController {
     public String login2(){
         return "login";
     }
+    @RequestMapping("/layim")
+    public String toLayUi(){
+        return "LayIm";
+    }
 
 }

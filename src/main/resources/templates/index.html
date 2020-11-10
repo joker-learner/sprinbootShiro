@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="Thymeleaf"
       xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="UTF-8">
@@ -15,22 +14,20 @@
     </shiro:guest>
 
     <shiro:user>
-        已登录的用户能看到......  <!-- principal 标签获得 当前登录的用户名-->
         用户[<shiro:principal/>] , 欢迎您！！！
-        用户的权限为 ： <shiro:hasRole name="admin">超级管理员</shiro:hasRole>
-        用户的权限为 ： <shiro:hasRole name="cmanager">仓库管理员</shiro:hasRole>
-        用户的权限为 ： <shiro:hasRole name="xmanager">销售人员</shiro:hasRole>
-        用户的权限为 ： <shiro:hasRole name="kmanager">客服人员</shiro:hasRole>
-        用户的权限为 ： <shiro:hasRole name="zmanager">行政管理员</shiro:hasRole>
+        <ul>用户的权限为 ：
+            <li> <shiro:hasRole name="admin">超级管理员</shiro:hasRole></li>
+            <li> <shiro:hasRole name="cmanager">仓库管理员</shiro:hasRole></li>
+            <li> <shiro:hasRole name="xmanager">销售人员</shiro:hasRole></li>
+            <li> <shiro:hasRole name="kmanager">客服人员</shiro:hasRole></li>
+            <li> <shiro:hasRole name="zmanager">行政管理员</shiro:hasRole></li>
+        </ul>
     </shiro:user>
     
     <ul>
-        <shiro:hasPermission name="sys:c:save"><li><a href="">入库</a></li></shiro:hasPermission>
-        <shiro:hasPermission name="sys:c:delete"><li><a href="">入库</a></li></shiro:hasPermission>
+        <shiro:hasPermission name="sys:c:save"><li><button onclick="javascript:location.href='login.html'" />入库</li></shiro:hasPermission>
+        <shiro:hasPermission name="sys:c:delete"><li><button onclick="javascript:location.href='login.html'" />出库</li></shiro:hasPermission>
     </ul>
-
-
-
 
 </div>
 </body>

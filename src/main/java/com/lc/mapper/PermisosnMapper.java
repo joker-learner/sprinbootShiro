@@ -8,4 +8,6 @@ public interface PermisosnMapper {
 
     //根据用户名查权限
     Set<String> querryPerMissionByName(String username);
+
+
 }

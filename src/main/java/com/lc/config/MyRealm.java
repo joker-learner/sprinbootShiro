@@ -4,19 +4,21 @@ import com.lc.mapper.PermisosnMapper;
 import com.lc.mapper.RoleMapper;
 import com.lc.mapper.UserMapper;
 import com.lc.pojo.Users;
-import lombok.SneakyThrows;
-import lombok.val;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import java.util.Set;
 
-//自定义realm（比对库）
+/**
+ *
+ * 自定义realm（比对库）  需要自己去通过用户名查数据库，找到角色名  ， 找到权限名
+ *
+ */
+
 public class MyRealm extends AuthorizingRealm {
     @Resource
     private UserMapper userMapper;
