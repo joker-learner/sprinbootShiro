@@ -8,25 +8,38 @@
 <body>
 <h1>主页</h1>
 <div>
-<!--    拥有权限才能看到shiro标签里的信息-->
+    <!--    拥有权限才能看到shiro标签里的信息-->
     <shiro:guest> <!--内容里的东西是未登录才能看到-->
         欢迎游客，请<a href="login.html">登录</a>
     </shiro:guest>
 
     <shiro:user>
         用户[<shiro:principal/>] , 欢迎您！！！
-        <ul>用户的权限为 ：
-            <li> <shiro:hasRole name="admin">超级管理员</shiro:hasRole></li>
-            <li> <shiro:hasRole name="cmanager">仓库管理员</shiro:hasRole></li>
-            <li> <shiro:hasRole name="xmanager">销售人员</shiro:hasRole></li>
-            <li> <shiro:hasRole name="kmanager">客服人员</shiro:hasRole></li>
-            <li> <shiro:hasRole name="zmanager">行政管理员</shiro:hasRole></li>
-        </ul>
+              当前用户是 :<shiro:hasRole name="admin">超级管理员</shiro:hasRole>
+                        <shiro:hasRole name="xmanager">销售人员</shiro:hasRole>
+                        <shiro:hasRole name="kmanager">客服人员</shiro:hasRole>
+                        <shiro:hasRole name="zmanager">行政管理员</shiro:hasRole>
     </shiro:user>
-    
+    仓库管理
     <ul>
-        <shiro:hasPermission name="sys:c:save"><li><button onclick="javascript:location.href='login.html'" />入库</li></shiro:hasPermission>
-        <shiro:hasPermission name="sys:c:delete"><li><button onclick="javascript:location.href='login.html'" />出库</li></shiro:hasPermission>
+        <shiro:hasPermission name="sys:c:save">
+            <li>
+                <a href="/"/>
+                入库
+            </li>
+        </shiro:hasPermission>
+        <shiro:hasPermission name="sys:c:delete">
+            <li>
+                <button onclick="javascript:location.href='login.html'"/>
+                出库
+            </li>
+        </shiro:hasPermission>
+        <shiro:hasPermission name="sys:c:delete">
+            <li>
+                <button onclick="javascript:location.href='login.html'"/>
+                出库
+            </li>
+        </shiro:hasPermission>
     </ul>
 
 </div>

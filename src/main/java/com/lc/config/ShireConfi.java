@@ -21,7 +21,6 @@ public class ShireConfi {
         HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
         matcher.setHashAlgorithmName("md5");
         matcher.setHashIterations(1);  //一次hash
-
         return matcher;
     }
 
@@ -40,7 +39,6 @@ public class ShireConfi {
         jdbcRealm.setCredentialsMatcher(matcher);
         jdbcRealm.setDataSource(dataSource);
         jdbcRealm.setPermissionsLookupEnabled(true);
-
         return jdbcRealm;
     }
 
@@ -49,7 +47,6 @@ public class ShireConfi {
     public DefaultWebSecurityManager defaultSecurityManager(JdbcRealm jdbcRealm) {
         DefaultWebSecurityManager   defaultSecurityManager = new DefaultWebSecurityManager  ();
         defaultSecurityManager.setRealm(jdbcRealm);
-
         return defaultSecurityManager;
     }
 

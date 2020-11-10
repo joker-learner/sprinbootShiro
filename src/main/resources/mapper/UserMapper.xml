@@ -9,14 +9,17 @@
         <result column="password" property="passWord"></result>
         <result column="password_salt" property="passSalt"></result>
     </resultMap>
+    <insert id="createUser">
+        insert into users(username , password) values(#{param1} , #{param2})
+    </insert>
 
     <select id="querryByName" resultMap="userMap">
         select * from users
         where username = #{username}
     </select>
-    
 
-    <update id="insertIntoSalt" >
+
+    <update id="insertIntoSalt">
        update users set password_salt = #{param2}
         where username = #{param1}
     </update>

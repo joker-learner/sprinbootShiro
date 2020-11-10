@@ -16,18 +16,12 @@ public class UserController {
 
     @Autowired
     private UserServerImpl userServerImpl;
-
     @Autowired
     private UserMapper userMapper;
 
     @RequestMapping("/login")
-    public String login(String userName ,String userPsd) {
-        //加盐加密
-        Integer rand = new Random().nextInt(10000);  //随机盐
-//        Md5Hash md5Hash = new Md5Hash(user.getPassWord(), rand);
-        userMapper.insertIntoSalt(userName, rand.toString());
-        System.out.println(userName  + userPsd);
-
+    public String login(String userName, String userPsd) {
+//        System.out.println(userName + userPsd);
         try {
             userServerImpl.login(userName, userPsd);
             System.out.println("登录成功...");
@@ -36,5 +30,14 @@ public class UserController {
             System.out.println("登录失败...");
             return "login";
         }
+    }
+
+    @RequestMapping("/rigister")
+    public String toIndex(String userName, String userPsd) {
+        int rand = new Random().nextInt(10000);  //随机盐
+        Md5Hash md5Hash = new Md5Hash(userPsd, rand+"");
+        userMapper.insertIntoSalt(userName, rand+"");
+        System.out.println("注册成功...");
+        return "index";
     }
 }

@@ -9,6 +9,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 
 import javax.annotation.Resource;
 import java.util.Set;
@@ -59,7 +60,9 @@ public class MyRealm extends AuthorizingRealm {
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
         String username = usernamePasswordToken.getUsername();
         Users user = userMapper.querryByName(username);
-        AuthenticationInfo info = new SimpleAuthenticationInfo(username, user.getPassWord(), getName());
+        //如果password_salt 盐字段有值  还需将盐加入AuthenticationInfo构造器
+        AuthenticationInfo info =
+                new SimpleAuthenticationInfo(username, user.getPassWord(), ByteSource.Util.bytes(user.getPassSalt()) ,getName());
         return info;
     }
 

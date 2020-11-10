@@ -9,6 +9,7 @@ public interface UserMapper {
     Users querryByName(String name);
 
     //插入盐值
-    int insertIntoSalt(String userName,String passWordSalt);
+    int insertIntoSalt(String userName, String passWordSalt);
 
+    int createUser(String userName, String passWord);
 }
