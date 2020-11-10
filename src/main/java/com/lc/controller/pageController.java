@@ -15,9 +15,14 @@ public class pageController {
     public String login2(){
         return "login";
     }
-    @RequestMapping("/layim")
+    @RequestMapping("/layim")    //调到LayIm.html
     public String toLayUi(){
         return "LayIm";
+    }
+
+    @RequestMapping("/torigister")  //调到register.html界面
+    public String toRigister(){
+        return "register";
     }
 
 }

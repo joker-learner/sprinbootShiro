@@ -59,7 +59,10 @@ public class ShireConfi {
         filterMap.put("/index", "anon");
         filterMap.put("/login", "anon");
         filterMap.put("/static/**" , "anon");
-        filterMap.put("/user/login","anon");
+        filterMap.put("/user/**","anon");
+        filterMap.put("/torigister","anon");
+
+
 //        filterMap.put("/layim" , "anon");
         filterMap.put("/**" , "authc");  //登录用户可以访问
         filter.setFilterChainDefinitionMap(filterMap);

@@ -20,7 +20,7 @@
 
 
     <update id="insertIntoSalt">
-       update users set password_salt = #{param2}
+        update users set password_salt = #{param2}
         where username = #{param1}
     </update>
 

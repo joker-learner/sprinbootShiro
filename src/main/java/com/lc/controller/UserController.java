@@ -19,6 +19,7 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+    //登录
     @RequestMapping("/login")
     public String login(String userName, String userPsd) {
 //        System.out.println(userName + userPsd);
@@ -32,11 +33,16 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/rigister")
+    //注册
+    @RequestMapping("/register")
     public String toIndex(String userName, String userPsd) {
-        int rand = new Random().nextInt(10000);  //随机盐
-        Md5Hash md5Hash = new Md5Hash(userPsd, rand+"");
-        userMapper.insertIntoSalt(userName, rand+"");
+
+//        int rand = new Random().nextInt(10000);  //随机盐
+        Md5Hash md5Hash = new Md5Hash(userPsd);
+
+//        System.out.println(rand);
+        userMapper.insertIntoSalt(userName, "");
+        userMapper.createUser(userName , md5Hash.toString());
         System.out.println("注册成功...");
         return "index";
     }

@@ -13,4 +13,5 @@ public class UserServerImpl {
         UsernamePasswordToken token = new UsernamePasswordToken(userName, userPsd);
         subject.login(token);
     }
+
 }
