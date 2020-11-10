@@ -65,6 +65,7 @@ public class ShireConfi {
 
 //        filterMap.put("/layim" , "anon");
         filterMap.put("/**" , "authc");  //登录用户可以访问
+        filterMap.put("/logout", "logout");
         filter.setFilterChainDefinitionMap(filterMap);
         filter.setLoginUrl("login.html");
 
