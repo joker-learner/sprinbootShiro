@@ -1,9 +1,14 @@
 package com.lc.controller;
 
+import com.lc.mapper.UserMapper;
+import com.lc.pojo.Users;
 import com.lc.service.UserServerImpl;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Random;
 
 @Controller
 @RequestMapping("/user")
@@ -12,12 +17,16 @@ public class UserController {
     @Autowired
     private UserServerImpl userServerImpl;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @RequestMapping("/login")
-    public String login(String userName, String userPsd) {
+    public String login(String userName ,String userPsd) {
         //加盐加密
-//        int rand = new Random().nextInt(10000);  //随机盐
-//        Md5Hash md5Hash = new Md5Hash(userPsd, rand);
-//        System.out.println(md5Hash.toHex());
+        Integer rand = new Random().nextInt(10000);  //随机盐
+//        Md5Hash md5Hash = new Md5Hash(user.getPassWord(), rand);
+        userMapper.insertIntoSalt(userName, rand.toString());
+        System.out.println(userName  + userPsd);
 
         try {
             userServerImpl.login(userName, userPsd);
