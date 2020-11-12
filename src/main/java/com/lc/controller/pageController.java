@@ -25,4 +25,9 @@ public class pageController {
         return "register";
     }
 
+    @RequestMapping("/tolessparmis")  //没有权限是跳到lessAuthorization.html
+    public String toplessAuthorisation(){
+        return "lessAuthorization";
+    }
+
 }

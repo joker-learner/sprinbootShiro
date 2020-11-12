@@ -15,9 +15,7 @@ import javax.annotation.Resource;
 import java.util.Set;
 
 /**
- *
  * 自定义realm（比对库）  需要自己去通过用户名查数据库，找到角色名  ， 找到权限名
- *
  */
 
 public class MyRealm extends AuthorizingRealm {
@@ -62,7 +60,7 @@ public class MyRealm extends AuthorizingRealm {
         Users user = userMapper.querryByName(username);
         //如果password_salt 盐字段有值  还需将盐加入AuthenticationInfo构造器
         AuthenticationInfo info =
-                new SimpleAuthenticationInfo(username, user.getPassWord(), ByteSource.Util.bytes(user.getPassSalt()) ,getName());
+                new SimpleAuthenticationInfo(username, user.getPassWord(), ByteSource.Util.bytes(user.getPassSalt()), getName());
         return info;
     }
 

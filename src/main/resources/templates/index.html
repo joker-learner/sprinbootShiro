@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>汽车厂管理系统</title>
+    <script src="../static/layUi/js/layui.all.js"></script>
+    <link href="../static/layUi/css/layui.css" rel="stylesheet" />
 </head>
 <body>
 <h1>主页</h1>
@@ -11,71 +13,83 @@
     <!--    拥有权限才能看到shiro标签里的信息-->
     <shiro:guest> <!--内容里的东西是未登录才能看到-->
         欢迎游客，请<a href="/">登录</a><img src="">
-        <a href="/logout">退出</a>
+
     </shiro:guest>
 </div>
-<div>
+<div align="right">
     <shiro:user>
         用户[<shiro:principal/>] , 欢迎您！！！
         当前用户是 :<shiro:hasRole name="admin">超级管理员</shiro:hasRole>
         <shiro:hasRole name="xmanager">销售人员</shiro:hasRole>
         <shiro:hasRole name="kmanager">客服人员</shiro:hasRole>
         <shiro:hasRole name="zmanager">行政管理员</shiro:hasRole>
+        <shiro:hasRole name="cmanager">仓库管理员</shiro:hasRole>
+        <a href="/logout">退出</a>
     </shiro:user>
 </div>
+
 <div>
     仓库管理
     <ul>
         <shiro:hasPermission name="sys:c:save">
-            <li><a href="#">入库</a></li>
+            <li><a href="/cangku/c_add" target="mainFrame">入库</a></li>
         </shiro:hasPermission>
         <shiro:hasPermission name="sys:c:delete">
-            <li><a href="#">出库</a></li>
+            <li><a href="/cangku/list">出库</a></li>
         </shiro:hasPermission>
         <shiro:hasPermission name="sys:c:delete">
-            <li><a href="#">更新</a></li>
+            <li><a href="/cangku/list">更新</a></li>
         </shiro:hasPermission>
         <shiro:hasPermission name="sys:c:delete">
-            <li><a href="#">查找库存</a></li>
+            <li><a href="/cangku/list">查找库存</a></li>
         </shiro:hasPermission>
     </ul>
 </div>
+
 <div>
     销售管理
     <ul>
         <shiro:hasPermission name="sys:x:save">
-             <li><a href="#">订单新建</a></li>
+             <li><a href="/#">订单新建</a></li>
         </shiro:hasPermission>
         <shiro:hasPermission name="sys:x:delete">
-            <li><a href="#">订单删除</a></li>
+            <li><a href="/#">订单删除</a></li>
         </shiro:hasPermission>
         <shiro:hasPermission name="sys:x:update">
-            <li><a href="#">订单更新</a></li>
+            <li><a href="/#">订单更新</a></li>
         </shiro:hasPermission>
         <shiro:hasPermission name="sys:x:find">
-            <li><a href="#">订单回看</a></li>
+            <li><a href="/#">订单回看</a></li>
         </shiro:hasPermission>
     </ul>
 </div>
+
 <div>
     客服管理
     <ul>
         <shiro:hasPermission name="sys:k:find">
-            <li><a href="#">查找客户名单</a></li>
+            <li><a href="/#">查找客户名单</a></li>
         </shiro:hasPermission>
         <shiro:hasPermission name="sys:k:update">
-            <li><a href="#">更新客户名单</a></li>
+            <li><a href="/#">更新客户名单</a></li>
         </shiro:hasPermission>
     </ul>
 </div>
+
 <div>
     行政管理
     <ul>
         <shiro:hasPermission name="sys:*:find">
-            <li><a href="#">办公用品管理</a></li>
+            <li><a href="/#">办公用品管理</a></li>
         </shiro:hasPermission>
 
     </ul>
+</div>
+    <!--内容主体区域-->
+<div class="layui-body">
+    <iframe name="mainFrame" width="100%" height="780" >
+
+    </iframe>
 </div>
 </body>
 </html>
